@@ -19,3 +19,6 @@ function addProject() {
   return db('project').insert(project);
 }
 
+function getTasks(id) {
+  return db('project').innerJoin('task', 'task.id', 'project.task_id').where({[project.id]: id})
+}
