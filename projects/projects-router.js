@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
 
   db.addProject(newProject)
     .then(project => {
-      res.status(201).json(project);
+      res.status(201).json({ project: "was added successfully " });
     })
     .catch(err => {
       res.status(500).json({ message: "Failed to create new project" });
@@ -44,7 +44,7 @@ router.post("/:id/tasks", (req, res) => {
   db.addTask(id, req.body)
     .then(task => {
       if (task) {
-        res.status(200).json(task);
+        res.status(201).json({ task: "was added successfully " });
       } else {
         res.status(404).json({ message: "Could not find task with given id." });
       }
@@ -67,7 +67,7 @@ router.get("/resources", (req, res) => {
 router.post("/resources", (req, res) => {
   db.addResource(req.body)
     .then(resource => {
-      res.status(200).json(resource);
+      res.status(201).json({ resource: "was added successfully " });
     })
     .catch(err => {
       res.status(500).json({ message: "Failed to get resource" });
